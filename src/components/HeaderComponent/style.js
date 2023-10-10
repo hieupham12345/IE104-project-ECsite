@@ -35,3 +35,34 @@ export const WrapperLabelBig=styled.button`
     border: solid #000;
     cursor: pointer;
 `
+export const WrapperLeftHeader=styled.div`
+    float: left;
+    width: 5.5%;
+    display: flex;
+    margin-top: 80px;
+    flex-direction: column;
+    margin-left: 30px;
+`
+export const WrapperRightHeader=styled.div`
+    float: right;
+    width: 5.5%;
+    display: flex;
+    margin-top: 80px;
+    flex-direction: column;
+    margin-right: 30px;
+`
+export const WrapperProductCategory=styled.button`
+    color: white;
+    height: 50px;
+    display: flex;
+    align-Items: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: inherit;
+    border: solid #4d4d4d;
+    flex-grow: 1;
+`
+
