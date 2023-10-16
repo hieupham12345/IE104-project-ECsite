@@ -11,7 +11,9 @@ const BrandComponent = ({imgUrl}) => {
         backgroundPosition: 'center',
         border: 'none',
         cursor: 'pointer',
-        zIndex: '2'}}>
+        backgroundColor: '#efeff5',
+        border: '0px'
+        }}>
     </Button>
   )
 }

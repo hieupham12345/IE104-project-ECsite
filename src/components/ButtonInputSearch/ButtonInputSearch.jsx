@@ -14,11 +14,11 @@ const ButtonInputSearch = (props) => {
   };
 
   return (
-    <div style={{ display: 'flex', width: '650px', height: '36px', marginLeft: '10px' }}>
+    <div style={{ display: 'flex', width: '30rem', height: '2.25rem' }}>
       <Input
         size={size}
         placeholder={placeholder}
-        style={{ fontSize: '12px', marginRight: '10px', color: 'black' }}
+        style={{ fontSize: '0.75rem', marginRight: '0.625rem', color: 'black' }}
         value={inputValue}
         onChange={handleInputChange} // Gọi hàm xử lý sự thay đổi giá trị
       />
@@ -26,7 +26,7 @@ const ButtonInputSearch = (props) => {
         <Button
           size={size}
           icon={<SearchOutlined />}
-          style={{ backgroundColor: 'yellow', height: '36px', fontWeight: 'bold' }}
+          style={{ backgroundColor: 'yellow', height: '100%', fontWeight: 'bold' }}
         >
           {textButton}
         </Button>
