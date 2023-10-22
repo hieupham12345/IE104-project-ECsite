@@ -8,6 +8,7 @@ export const WrapperTextFlashSale=styled.div`
     margin-bottom: 4px;
     text-transform: uppercase;
     margin-top: 40px;
+    margin-left: 5px;
 `
 export const WrapperTimeCountDown=styled.div`
     height: 22px;
@@ -17,6 +18,8 @@ export const WrapperTimeCountDown=styled.div`
     color: white;
     display: flex;
     justify-content: center;
+    margin-right: 5px; 
+    margin-left: 5px;
 `
 export const WrapperDaySale=styled.button`
     width: 178px;

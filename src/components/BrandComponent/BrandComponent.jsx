@@ -9,7 +9,6 @@ const BrandComponent = ({imgUrl}) => {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        border: 'none',
         cursor: 'pointer',
         backgroundColor: '#efeff5',
         border: '0px'

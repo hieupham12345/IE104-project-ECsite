@@ -10,8 +10,14 @@ import BrandLabel from './../../Data/BrandLabel';
 import BrandComponent2x from './../../components/BrandComponent/BrandComponent2x';
 import BrandComponent3x from './../../components/BrandComponent/BrandComponent3x';
 import FlashSaleComponent from '../../components/FlashSaleComponent/FlashSaleComponent'
-import HotdealComponent from '../../components/HotdealComponent/HotdealComponent'
-
+import HotdealProduct from './../../Data/HotdealProduct';
+import OtherSaleComponent from './../../components/OtherSaleComponent/OtherSaleComponent';
+import BestSeller from './../../Data/BestSeller';
+import ClearanceSale from './../../Data/ClearanceSale';
+import SpecialOffer from './../../Data/SpecialOffer';
+import HomepageFooterComponent from './../../components/HomepageFooterComponent/HomepageFooterComponent';
+import { WrapperFooter } from '../../components/FooterComponent/style'
+import { WrapperLeftHeader, WrapperRightHeader } from './../../components/HeaderComponent/style';
 const BrandLabel2xdata = [
     {
         name: "Label 1",
@@ -39,39 +45,54 @@ const BrandLabel3xdata = [
 ];
 const HomePage = () => {
   return (
-    <div style={{paddingTop: '9.25rem', display: 'flex', flexDirection: 'column'}}>
-      <div  style={{flexDirection: 'column', marginLeft: '140px', marginRight: '140px'}}>
-        <div style={{position: 'absolute', width: '74rem'}}>
-          <SliderComponent arrImages={[slider1, slider2, slider3, slider4, slider5]} />
+    <div>
+      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+        <div style={{paddingTop: '9.25rem', display: 'flex', flexDirection: 'column',marginLeft: '140px', marginRight: '140px', alignItems: 'center'}}>
+            <div style={{position: 'absolute', width: '74rem'}}>
+              <SliderComponent arrImages={[slider1, slider2, slider3, slider4, slider5]} />
+            </div>
+            <div style={{diplay: 'flex', pointerEvents: 'none',  position: 'fixed'}}>
+                <WrapperLeftHeader>
+                    <img src="https://hoang-phuc.com/media/wysiwyg/banner26092023/80x270.png" alt="" />
+                </WrapperLeftHeader>
+                <WrapperRightHeader>
+                    <img src="https://hoang-phuc.com/media/wysiwyg/banner10032023/80x270_copy.png" alt="" />
+                </WrapperRightHeader>
+            </div>
+            <div style={{flexDirection: 'column', backgroundColor: '#efeff5', marginTop: '20rem',width: '74rem', justifyContent: 'center'}}>
+              <div style={{ marginTop: '1.5625rem', display: 'flex', justifyContent: 'space-between'}}>
+                {
+                  BrandLabel.map((brand, index) => (
+                    <BrandComponent key={index} imgUrl={brand.imageUrl} />
+                  ))
+                }
+              </div>
+              <div style={{ marginTop: '1.5625rem', display: 'flex', justifyContent: 'space-between' }}>
+                {
+                  BrandLabel2xdata.map((brand, index) => (
+                    <BrandComponent2x key={index} imgUrl={brand.imageUrl} />
+                  ))
+                }
+              </div>
+              <div style={{ marginTop: '1.5625rem', display: 'flex', justifyContent: 'space-between' }}>
+                {
+                  BrandLabel3xdata.map((brand, index) => (
+                    <BrandComponent3x key={index} imgUrl={brand.imageUrl} />
+                  ))
+                }
+              </div>
+              <div style={{ marginTop: '0.625rem', marginLeft: '0.3125rem', marginRight: '0.3125rem' }}>
+                <FlashSaleComponent />
+                <OtherSaleComponent Product={HotdealProduct} imgUrl='https://hoang-phuc.com/media/wysiwyg/Artboard_3.png'/>
+                <OtherSaleComponent Product={BestSeller} imgUrl='https://hoang-phuc.com/media/wysiwyg/Artboard_4.png' />
+                <OtherSaleComponent Product={ClearanceSale} imgUrl='https://hoang-phuc.com/media/wysiwyg/Artboard_5.png' />
+                <OtherSaleComponent Product={SpecialOffer} imgUrl='https://hoang-phuc.com/media/wysiwyg/Artboard_6.png' />
+              </div>
+            </div>
         </div>
-        <div style={{justifyContent: 'center', flexDirection: 'column', backgroundColor: '#efeff5', marginTop: '20rem', position: 'absolute', width: '74rem' }}>
-          <div style={{ marginTop: '1.5625rem', display: 'flex', justifyContent: 'space-between'}}>
-            {
-              BrandLabel.map((brand, index) => (
-                <BrandComponent key={index} imgUrl={brand.imageUrl} />
-              ))
-            }
-          </div>
-          <div style={{ marginTop: '1.5625rem', display: 'flex', justifyContent: 'space-between' }}>
-            {
-              BrandLabel2xdata.map((brand, index) => (
-                <BrandComponent2x key={index} imgUrl={brand.imageUrl} />
-              ))
-            }
-          </div>
-          <div style={{ marginTop: '1.5625rem', display: 'flex', justifyContent: 'space-between' }}>
-            {
-              BrandLabel3xdata.map((brand, index) => (
-                <BrandComponent3x key={index} imgUrl={brand.imageUrl} />
-              ))
-            }
-          </div>
-          <div style={{ marginTop: '0.625rem', marginLeft: '0.3125rem', marginRight: '0.3125rem' }}>
-            <FlashSaleComponent></FlashSaleComponent>
-
-            <HotdealComponent></HotdealComponent>
-          </div>
-        </div>
+        <WrapperFooter> 
+          <HomepageFooterComponent />
+        </WrapperFooter>
       </div>
     </div>
   )

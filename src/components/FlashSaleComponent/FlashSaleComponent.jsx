@@ -4,49 +4,35 @@ import {
   WrapperTextFlashSale,
   WrapperTextFlashSaleDay,
   WrapperTextFlashSaleDayTime,
-  WrapperTimeCountDown,
 } from './style';
 import FlashSaleProduct from '../../Data/FlashSaleProduct';
 import CardComponent from './../CardComponent/CardComponent';
+import CountdownClock from './CountdownClock';
 
-const FlashSaleTime = [
-  {
-    id: 1,
-    day: '10 Thg 10 2023',
-  },
-  {
-    id: 2,
-    day: '11 Thg 10 2023',
-  },
-  {
-    id: 3,
-    day: '12 Thg 10 2023',
-  },
-];
 
 const FlashSaleComponent = () => {
-  // Use an array of state objects to manage the background color and text color for each WrapperDaySale
   const [saleStates, setSaleStates] = useState(
-    FlashSaleTime.map(() => ({
+    FlashSaleProduct.map((product) => ({
       backgroundColor: '',
       textColor: '',
+      day: product['day'],
     }))
   );
 
-  // Hàm xử lý khi người dùng nhấp vào các WrapperDaySale
+  const [selectedDaySale, setSelectedDaySale] = useState('20/11/2023')
+
+
   const handleDaySaleClick = (index) => {
-    // Create a copy of the state array
     const newSaleStates = saleStates.map((state, i) => {
       if (i === index) {
-        // Update the state for the clicked WrapperDaySale
-        return { backgroundColor: 'red', textColor: 'white' };
+        return { backgroundColor: 'red', textColor: 'white', day: state.day };
       } else {
-        // Reset the state for other WrapperDaySale elements
-        return { backgroundColor: '', textColor: '' };
+        return { backgroundColor: '', textColor: '', day: state.day };
       }
     });
-
+    const selectedDay = newSaleStates[index].day;
     setSaleStates(newSaleStates);
+    setSelectedDaySale(selectedDay)
   };
 
   return (
@@ -69,18 +55,12 @@ const FlashSaleComponent = () => {
       />
       <div>
         <WrapperTextFlashSale>SẮP DIỄN RA</WrapperTextFlashSale>
-        <div style={{ display: 'flex' }}>
-          <WrapperTimeCountDown>00</WrapperTimeCountDown>
-          <span style={{ textAlign: 'center', margin: '0 3px' }}>:</span>
-          <WrapperTimeCountDown>00</WrapperTimeCountDown>
-          <span style={{ textAlign: 'center', margin: '0 3px' }}>:</span>
-          <WrapperTimeCountDown>51</WrapperTimeCountDown>
-          <span style={{ textAlign: 'center', margin: '0 3px' }}>:</span>
-          <WrapperTimeCountDown>23</WrapperTimeCountDown>
+        <div style={{ display: 'flex'}}>
+          <CountdownClock></CountdownClock>
         </div>
       </div>
       <div style={{ marginLeft: '300px', display: 'flex' }}>
-        {FlashSaleTime.map((daysale, index) => {
+        {FlashSaleProduct.map((sale, index) => {
           const { backgroundColor, textColor } = saleStates[index];
           return (
             <WrapperDaySale
@@ -89,22 +69,23 @@ const FlashSaleComponent = () => {
               style={{ backgroundColor, color: textColor }}
             >
               <WrapperTextFlashSaleDay>SẮP DIỄN RA</WrapperTextFlashSaleDay>
-              <WrapperTextFlashSaleDayTime>{daysale.day}</WrapperTextFlashSaleDayTime>
+              <WrapperTextFlashSaleDayTime>{sale['day']}</WrapperTextFlashSaleDayTime>
             </WrapperDaySale>
           );
         })}
       </div>
       </div>
-      <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between'}}>
+     <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', marginLeft: '5px'}}>
         {
-          FlashSaleProduct.map((product, index) => {
-            return (
-              <React.Fragment key={index}>
-                <CardComponent product={product}></CardComponent>
-                {index !== 0 && (index + 1) % 5 === 0 && <br />}
-              </React.Fragment>
-            );
-          })
+          FlashSaleProduct.map((product) => (
+            product['day'] === selectedDaySale ? (
+              product['product'].map((product, index) => (
+                  <React.Fragment key={index}>
+                    <CardComponent product={product}></CardComponent>
+                    {index !== 0 && (index + 1) % 5 === 0 && <br />}
+                  </React.Fragment>))
+            ) : null
+          ))
         }
       </div>
     </div>

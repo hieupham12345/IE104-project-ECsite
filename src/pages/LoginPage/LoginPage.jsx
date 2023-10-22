@@ -1,8 +1,11 @@
 import React from 'react'
+import LoginComponent from '../../components/LoginComponent/LoginComponent'
 
 const LoginPage = () => {
   return (
-    <div>LoginPage</div>
+    <div style={{backgroundColor: '#F6F6F6'}}>
+      <LoginComponent></LoginComponent>
+    </div>
   )
 }
 

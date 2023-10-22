@@ -1,16 +1,15 @@
 import React from 'react'
-import HotdealProduct from '../../Data/HotdealProduct';
-import CardComponent from './../CardComponent/CardComponent';
+import CardComponent from '../CardComponent/CardComponent';
 import { WrapperText } from './style';
 
-const HotdealComponent = () => {
+const HotdealComponent = ({imgUrl, Product}) => {
   return (
     <div style={{marginTop: '20px'}}>
       <div>
-        <img src="https://hoang-phuc.com/media/wysiwyg/Artboard_3.png" alt="" style={{width: '100%'}} />
+        <img src={imgUrl} alt="" style={{width: '100%'}} />
       </div>
-      <div style={{display: 'flex',  justifyContent: 'space-between', flexWrap: 'wrap'}}>
-        { HotdealProduct.map((product, index) => (
+      <div style={{display: 'flex',  justifyContent: 'space-between', flexWrap: 'wrap', marginLeft: '5px'}}>
+        { Product.map((product, index) => (
               <React.Fragment key={index}>
                 <CardComponent product={product}></CardComponent>
                 {index !== 0 && (index + 1) % 5 === 0 && <br />}
