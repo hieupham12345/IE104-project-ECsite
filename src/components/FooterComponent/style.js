@@ -68,13 +68,15 @@ export const WrapperSmallTextB2=styled.span`
     font-weight: 400;
 `
 
-export const WrapperInput=styled.input`
+export const WrapperInput=styled.div`
     width: 407px;
     height: 44px;
     border-radius: 10px;
-    background-color: #4c4f54;
+    background-color: white;
     margin-left: 50px;
     border: 0px;
+    display: flex;
+    align-items: center;
 `
 
 export const WrapperButton=styled.button`

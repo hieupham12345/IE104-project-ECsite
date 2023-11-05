@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import ImageProduct from '../../assets/images/product1.webp'
 import ImageProductSmall from '../../assets/images/imagesmall.webp'
 import ImageProductSmall1 from '../../assets/images/imagesmall1.webp'
 import ImageProductSmall2 from '../../assets/images/imagesmall2.webp'
 import { Col, Image, Row } from "antd";
-import { WrapperStyleImageSmall, WrapperStyleColImage, WrapperStyleNameProduct, WrapperSalePrice, WrapperOriginalPrice, addtolikes} from "./style";
+import { WrapperStyleImageSmall, WrapperStyleColImage, WrapperStyleNameProduct, WrapperSalePrice, WrapperOriginalPrice} from "./style";
 
 
 const ProductDetailsComponent = () => {

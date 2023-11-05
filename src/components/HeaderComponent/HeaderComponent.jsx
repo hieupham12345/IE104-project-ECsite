@@ -5,19 +5,29 @@ import { OrderedListOutlined, ShoppingCartOutlined, UserOutlined } from '@ant-de
 import { useNavigate } from 'react-router-dom';
 import Categories from '../../Data/ProductCategory'
 import CategoryDetails from './CategoryDetails';
+import { useSelector } from 'react-redux';
 
 
 const HeaderComponent = () => {
   const navigate = useNavigate();
-
+  const user = useSelector((state) => state.user)
+  
   const navigateToLogin = () => {
     navigate('/login');
+    window.scrollTo(0, 0);
   };
   const navigateToTopPage = () => {
     navigate('/');
+    window.scrollTo(0, 0);
   };
   const navigateToOrderPage = () => {
     navigate('/order')
+    window.scrollTo(0, 0);
+
+  };
+  const navigateToProfile = () => {
+    navigate('/profile/account')
+    window.scrollTo(0,0)
   };
 
   const [hoveredCategory, setHoveredCategory] = useState(null);
@@ -35,12 +45,6 @@ const HeaderComponent = () => {
   const [searchInput, setSearchInput] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
 
-  const [isClickedOrder, setIsClicked] = useState(false)
-  const onClickOrder = () => {
-        setIsClicked(!isClickedOrder);  
-        setErrorMessage('');
-    };
-
 
   const handleSearch = () => {
     if (searchInput.trim() === '') {
@@ -50,6 +54,23 @@ const HeaderComponent = () => {
       setErrorMessage(''); // Xóa thông báo lỗi nếu có
     }
   };
+
+  const isLoggedIn = localStorage.getItem('access_token')
+  const navigateToOrderProfile = () => {
+    navigate('/profile/account/order')  
+    window.scrollTo(0,0)
+  }
+
+  const [isClickedOrder, setIsClicked] = useState(false)
+  const onClickOrder = () => {
+        if (isLoggedIn) {
+            navigateToOrderProfile()
+        } else { 
+            setIsClicked(!isClickedOrder);  
+            setErrorMessage('');
+        }
+    };
+
   return (
     <div style={{display: 'flex', justifyContent: 'center'}}>
         <div style={{display: 'flex', flexDirection: 'column',  width: '100%',position: 'fixed', zIndex: 15}}>
@@ -72,7 +93,11 @@ const HeaderComponent = () => {
                         <div>
                             <WrapperLabelSmall>Tài khoản</WrapperLabelSmall>
                             <div>
+                                {user?.fullName ? 
+                                <WrapperLabelBig onClick={navigateToProfile}>{user?.fullName}</WrapperLabelBig>
+                                :
                                 <WrapperLabelBig onClick={navigateToLogin}>Đăng nhập</WrapperLabelBig>
+                                }
                             </div>
                         </div>
                     </div>
@@ -127,7 +152,7 @@ const HeaderComponent = () => {
                 <img src="https://d1mf3ex7u8qau8.hoang-phuc.com/svg/messenger.svg" alt="Messenger" />
             </div>
         </div>
-        {isClickedOrder && (
+        {isClickedOrder && !isLoggedIn && (
             <div style={{height: '250px', width: '718px', backgroundColor: 'white', position: 'fixed', zIndex: 25, marginTop: '150px', borderRadius: '10px'}}>
                 <div style={{height: '64px', display: 'flex', alignItems: 'center'}}>
                     <WrapperOrderTextBig>TRA CỨU ĐƠN HÀNG</WrapperOrderTextBig>

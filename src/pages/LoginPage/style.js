@@ -2,11 +2,12 @@
 import { styled } from 'styled-components';
 
 export const LoginContainer=styled.div`
-    margin-top: 150px;
+    padding-top: 150px;
     display: flex;
     align-Items: center;
     flex-direction: column;
     padding-bottom: 50px;
+    background-color: #f6f6f6;
 `
 export const LoginTitle=styled.span`
     font-size: 20px;
@@ -19,7 +20,7 @@ export const LoginTitle=styled.span`
 export const LoginType=styled.div`
     height: 100%;
     width: 100%;
-    align-items: center;
+    align-Items: center;
     display: flex;
     justify-content: center;
 `
@@ -48,9 +49,10 @@ export const LoginLabel=styled.span`
     font-size: 14px;
     font-weight: 500;
     color: #333;
+    margin-top: 10px;
 `
 export const WrapperButton=styled.div`
-    width: 553px;
+    width: 558.6px;
     height: 46px;
     background-color: #000;
     border-radius: 6px;
@@ -62,3 +64,4 @@ export const WrapperButton=styled.div`
     cursor: pointer;
     font-weight: bold;
 `
+

@@ -20,9 +20,9 @@ const ButtonInputSearch = (props) => {
         placeholder={placeholder}
         style={{ fontSize: '0.75rem', marginRight: '0.625rem', color: 'black' }}
         value={inputValue}
-        onChange={handleInputChange} // Gọi hàm xử lý sự thay đổi giá trị
+        onChange={handleInputChange} 
       />
-      {inputValue && ( // Hiển thị nút chỉ khi có giá trị trong trường input
+      {inputValue && (
         <Button
           size={size}
           icon={<SearchOutlined />}
