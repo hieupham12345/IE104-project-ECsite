@@ -54,7 +54,6 @@ export const WrapperLabelSmall = styled.span`
     font-weight: 500;
 `
 export const WrapperSmallInfoContainer = styled.div`
-    height: 118px;
     width: 412px;
     background-color: white;
     border-radius: 10px;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { WrapperCheckText, WrapperContainer } from './style';
 import { LoginBlockContainer, LoginLabel, LoginTitle, WrapperButton } from '../LoginPage/style';
 import { useNavigate } from 'react-router-dom';
@@ -37,12 +37,12 @@ const RegisterPage = () => {
     setPhoneNumber(text)
   } 
 
-  const [emailCheckbox, setEmailCheckbox] = useState(true)
+  const [emailCheckbox, setEmailCheckbox] = useState(false)
   const tickEmail = () => {
     setEmailCheckbox(!emailCheckbox)
   }
 
-  const [email, setEmail] = useState('')
+  const [email, setEmail] = useState("")
   const handleEmailChange = (text) => {
     setEmail(text)
   } 
@@ -67,9 +67,13 @@ const RegisterPage = () => {
     setConfirmPassword(confirmPassword)
   }
 
-  const [receiveNew, setReceiveNew] = useState(false)
+  const [receiveNew, setReceiveNew] = useState("false")
   const handleReceiveNewChange = () => {
-    setReceiveNew(!receiveNew)
+    if (receiveNew==="true") {
+      setReceiveNew("false")
+    } else {
+      setReceiveNew("true")
+  }
   }
 
   const [agree, setAgree] = useState(false)
@@ -78,21 +82,24 @@ const RegisterPage = () => {
   }
 
   const [signUpMessage, setSignUpMessage] = useState('')
-  const mutation = useMutationHook(data => userService.userSignup(data))
 
+  const mutation = useMutationHook(data => userService.userSignup(data))
+  const { data } = mutation
   const onClickSignUp = async () => {
-    if (agree && message === '' && fullName !== '' && phoneNumber !== '' && email !== '' && password !== '' && confirmPassword !== '') {
+    setReceiveNew(receiveNew.toString())
+    if (agree && message === null && fullName !== '' && phoneNumber !== ''  && password !== '' && confirmPassword !== '') {
       if (password === confirmPassword) {
+        
         mutation.mutate({
           fullName,
           phoneNumber,
           password,
-          confirmPassword,
+          re_password: confirmPassword,
           receiveNew,
           email,
         });
-        navigate('/login');
-      } else {
+      } 
+      else {
         setSignUpMessage('Mật khẩu và xác nhận mật khẩu phải trùng khớp.');
       }
     } else {
@@ -109,7 +116,7 @@ const RegisterPage = () => {
       if (phoneNumber === '') {
         missingFields.push('Hãy nhập số điện thoại.');
       }
-      if (email === '') {
+      if (!emailCheckbox && email === '') {
         missingFields.push('Hãy nhập địa chỉ email.');
       }
       if (password === '') {
@@ -123,7 +130,12 @@ const RegisterPage = () => {
     }
   }
 
-
+  useEffect(() => {
+    if (data?.message==="SUCCESS") {
+      window.alert('Success')
+      navigate('/login')
+    }
+  },[])
   return (
     <WrapperContainer>
       <LoginTitle>ĐĂNG KÝ</LoginTitle>
@@ -141,13 +153,14 @@ const RegisterPage = () => {
           <InputContainer onTextChange={handleEmailChange} placeholder={'Nhập Email của bạn'} type={'email'}/>
           <div style={{display: 'flex'}}>
             <input 
+                checked={emailCheckbox}
                 type='checkbox' 
                 style={{height: '15px', width:'15px', marginTop: '11px', marginRight: '10px'}}
-                onClick={tickEmail}
+                onChange={tickEmail}
                 />
             <LoginLabel>Tôi không có địa chỉ email</LoginLabel>
           </div>
-          {!emailCheckbox && (<div style={{fontSize: '14px', color: 'red'}}>Bạn sẽ không nhận được thông tin các chương trình khuyến mãi của Hoàng Phúc qua email.</div>)}
+          {emailCheckbox && (<div style={{fontSize: '14px', color: 'red'}}>Bạn sẽ không nhận được thông tin các chương trình khuyến mãi của Hoàng Phúc qua email.</div>)}
           <LoginLabel>Mật khẩu <span style={{color: 'red'}}>*</span></LoginLabel>
           <InputContainer placeholder={'Nhập mật khẩu của bạn'} type={'password'}
               onTextChange={(newPassword) => handlePasswordChange(newPassword)}
@@ -167,7 +180,7 @@ const RegisterPage = () => {
           />
           <div style={{display: 'flex'}}>
             <input 
-                checked={receiveNew}
+                checked={receiveNew === "true" ? true : false}
                 type='checkbox' 
                 style={{height: '15px', width:'15px', marginTop: '11px', marginRight: '10px'}}
                 onChange={handleReceiveNewChange}
@@ -184,6 +197,8 @@ const RegisterPage = () => {
             <LoginLabel>Tôi đồng ý với các <span style={{color: '#3E72D6'}}>Điều khoản sử dụng</span> và <span style={{color: '#3E72D6'}}>Chính sách bảo mật</span> của Hoàng Phúc.</LoginLabel>
           </div>
           <div style={{fontSize: '12px', color: 'red'}}>{signUpMessage}</div>
+          <div style={{fontSize: '12px', color: 'red'}}>{data?.message}</div>
+
           <WrapperButton onClick={onClickSignUp}>ĐĂNG KÝ</WrapperButton>
         </div>
       </LoginBlockContainer>

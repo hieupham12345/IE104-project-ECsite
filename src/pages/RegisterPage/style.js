@@ -6,6 +6,7 @@ export const WrapperContainer=styled.div`
     align-Items: center;
     flex-direction: column;
     padding-bottom: 50px;
+    background-color: #f6f6f6;
 `
 export const WrapperCheckText=styled.span`
     float: left;

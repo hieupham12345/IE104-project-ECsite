@@ -16,8 +16,8 @@ function App () {
     const { storageData, decoded } = handleDecoded()
     const currentTime = new Date()
     let storageRefreshToken = localStorage.getItem('refresh_token')
-    const refreshToken = JSON.parse(storageRefreshToken)
-    const decodedRefreshToken =  jwtDecode(refreshToken)
+    // const refreshToken = JSON.parse(storageRefreshToken)
+    // const decodedRefreshToken =  jwtDecode(refreshToken)
     if (decoded?.id && currentTime.getTime()/1000 < decoded?.exp) {
        handleGetDetailUser(decoded?.id, storageData)
      } 

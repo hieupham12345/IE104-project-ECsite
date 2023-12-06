@@ -45,8 +45,7 @@ const LoginPage = () => {
         }
       }
     }
-  }, [isSuccess])
-
+  }, [data?.access_token])
   const handleGetDetailUser = async (id, token) => {
     const storage = localStorage.getItem('refresh_token')
     const refreshToken = JSON.parse(storage)
@@ -74,7 +73,6 @@ const LoginPage = () => {
         password
     })
   }
-
 
   return (
     <LoginContainer>

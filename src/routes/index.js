@@ -11,6 +11,13 @@ import AccountAddress from '../pages/Profile/AccountAddress';
 import Order from '../pages/Profile/Order';
 import LikeProduct from '../pages/Profile/LikeProduct';
 import refund from '../pages/Profile/refund';
+import AdminDasboard from './../pages/AdminPage/AdminDasboard';
+import AdminProduct from '../pages/AdminPage/AdminProduct';
+import AdminOrder from './../pages/AdminPage/AdminOrder';
+import AdminCustomer from './../pages/AdminPage/AdminCustomer';
+import AdminStatistic from './../pages/AdminPage/AdminStatistic';
+import AdminSale from './../pages/AdminPage/AdminSale';
+import AdminReview from './../pages/Profile/AdminReview';
 
 export const routes=[
     {
@@ -73,6 +80,41 @@ export const routes=[
         path:'/profile/account/refund',
         page: refund,
         isShowHeader: true
+    },
+    {
+        path:'/admin/dashboard',
+        page: AdminDasboard,
+        isShowHeader: false
+    },
+    {
+        path:'/admin/product',
+        page: AdminProduct,
+        isShowHeader: false
+    },
+    {
+        path:'/admin/order',
+        page: AdminOrder,
+        isShowHeader: false
+    },
+    {
+        path:'/admin/customer',
+        page: AdminCustomer,
+        isShowHeader: false
+    },
+    {
+        path:'/admin/statistic',
+        page: AdminStatistic,
+        isShowHeader: false
+    },
+    {
+        path:'/admin/sale',
+        page: AdminSale,
+        isShowHeader: false
+    },
+    {
+        path:'/admin/review',
+        page: AdminReview,
+        isShowHeader: false
     },
     {
         path: "*",
