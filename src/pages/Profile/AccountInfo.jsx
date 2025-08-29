@@ -8,7 +8,6 @@ const AccountInfo = () => {
   const user = useSelector((state) => state.user);
   const navigate = useNavigate()
 
-
   const onClickChangePass = () => {
     navigate('/profile/account/edit')
     window.scrollTo(0,0)
@@ -29,8 +28,8 @@ const AccountInfo = () => {
             <div style={{display: 'flex'}}>
                 <WrapperSmallInfoContainer>
                     <span style={{fontWeight: '600', marginBottom: '8px'}}>Thông tin cá nhân</span>
-                    <WrapperInfoText>{user.fullName} - {user.phoneNumber}</WrapperInfoText>
-                    <WrapperInfoText>Email: {user.email}</WrapperInfoText>
+                    <WrapperInfoText>{user?.fullName} - {user?.phoneNumber}</WrapperInfoText>
+                    <WrapperInfoText>Email: {user?.email}</WrapperInfoText>
                     <div style={{marginTop: '40px', display: 'flex', justifyContent: 'space-between', position: 'relative'}}>
                         <span style={{color: 'blue', fontWeight: '600', textDecoration: 'underline', cursor: 'pointer'}} onClick={onClickChangePass}>Đổi mật khẩu</span>
                         <div style={{alignItems: 'center', display: 'flex', cursor: 'pointer'}} onClick={onClickChangePass}>
@@ -41,10 +40,10 @@ const AccountInfo = () => {
                 </WrapperSmallInfoContainer>
                 <WrapperSmallInfoContainer>
                     <span style={{fontWeight: '600', marginBottom: '8px'}}>Thông tin giao hàng</span>
-                    {user.address_list ? (
+                    {user?.address_list ? (
                       <div style={{display: 'flex', flexDirection: 'column'}}>
-                        <WrapperInfoText>{user.address_list[0].fullName} - {user.address_list[0].phoneNumber}</WrapperInfoText>
-                        <WrapperInfoText>Địa chỉ: {user.address_list[0].address}</WrapperInfoText>
+                        <WrapperInfoText>{user?.address_list[0]?.fullName} - {user?.address_list[0]?.phoneNumber}</WrapperInfoText>
+                        <WrapperInfoText>Địa chỉ: {user?.address_list[0]?.address}</WrapperInfoText>
 
                       </div>
                     ) : (                    

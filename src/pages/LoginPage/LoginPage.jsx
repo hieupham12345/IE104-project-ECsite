@@ -50,6 +50,7 @@ const LoginPage = () => {
     const storage = localStorage.getItem('refresh_token')
     const refreshToken = JSON.parse(storage)
     const res = await userService.getDetailUser(id, token)
+    console.log(res)
     disPatch(updateUser({ ...res?.data, access_token: token,refresh_token: refreshToken }))
   }
 
