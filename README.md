@@ -1,6 +1,6 @@
 # 🛒 React.js Practice – Look and Code
 
-This project was built as a **React.js practice exercise**.  
+This project was built as a **React.js practice exercise for a university course**.  
 I specifically **observed the official website of Hoang Phuc Store** and then **recreated the interface from scratch**.  
 All layouts were **broken down into React components** and rebuilt step by step, based on my own coding approach.  
 
@@ -8,9 +8,11 @@ All layouts were **broken down into React components** and rebuilt step by step,
 
 ## 🎯 Purpose
 
-- Practice **learning React.js** (component structure, state management, UI composition).  
+- Main goal: **practice React.js UI development** (component structure, state management, UI composition).  
 - A “**look and code**” method: observe an existing real-world design (official brand site), then **reinterpret and rebuild it** with React.  
-- **Not a clone for commercial use** — purely for practice.  
+- UI implementation reached about **70–80% completion** before the course ended — so it’s not a full interface yet.  
+- Tried some **basic backend features** (login & signup), but backend was not the main focus.  
+- **Not a clone for commercial use** — purely for academic and coding practice.  
 
 ---
 
@@ -22,14 +24,16 @@ All layouts were **broken down into React components** and rebuilt step by step,
 
 ## 🚀 Notes
 
-- Focused mainly on **UI building** and **component breakdown**.  
-- Helps train both **design observation** and **coding implementation**.  
-- ⚠️ This is a **student project**, built mainly to practice React.js. At the time I hadn’t fully mastered:
+- Strong focus on **UI building** and **component breakdown**.  
+- Helps train both **design observation** and **coding implementation** in React.  
+- ⚠️ This is a **student project**, built mainly for learning purposes. At the time I hadn’t fully mastered:
   - GitHub workflow (commits, branches, pull requests, etc.)  
   - Writing **clean code** and following best practices  
   - Adding proper **comments** and documentation  
+  - Completing a full UI flow (only ~70–80% done)  
+  - Structuring a complete **backend** (only basic login/signup available)  
 
-So the code might not be perfectly structured, but it reflects my **early learning process**.  
+So the code might not be perfectly structured, but it reflects my **early learning process** and growth in React.  
 
 ---
 
